@@ -34,6 +34,18 @@ switch ($route) {
             require('controllers/ride_ctrl.php');
             require('views/proposer.php');
             handleRideSubmission();
+        case 'reserver_trajet':
+        require 'controllers/reservation_controle.php';
+            ctrl_reserver_trajet();
+        break;
+
+    case 'confirmation_reservation':
+        require 'views/confirmation_reservation.php';
+        break;
+ 
+    case 'reservation_success':
+        require 'views/confirmation_succes.php';
+        break;
 
     default:
         require('views/404_view.php');
