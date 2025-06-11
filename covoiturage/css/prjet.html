@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Lalacar - Proposer un covoiturage</title>
+    <link rel="stylesheet" href="prjet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<!-- Barre de navigation -->
+<header class="navbar">
+    <div class="navbar-left">
+        <!-- On remplace le texte Lalacar par l'image -->
+        <img src="C:\Users\nabel\Desktop\nouv\prjet.saer203\SAE_R203-main\SAE203_FULL\css\logo.png" alt="Logo Lalacar" class="navbar-logo" />
+    </div>
+    <div class="navbar-center">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="navbar-right">
+        <button class="logout-btn">Se déconnecter</button>
+    </div>
+</header>
+
+
+<!-- Contenu principal -->
+<main class="form-container">
+    <div class="card">
+        <h2>Proposer un covoiturage</h2>
+
+        <form method="POST" action="index.php?route=submit_ride">
+            <input type="text" name="lieuDepart" placeholder="Lieu de départ (adresse ou GPS)" required />
+            <input type="text" name="gpsDepart" placeholder="Coordonnées GPS départ (optionnel)" />
+            <input type="text" name="lieuArrivee" placeholder="Lieu d'arrivée (adresse ou GPS)" required />
+            <input type="text" name="gpsArrivee" placeholder="Coordonnées GPS arrivée (optionnel)" />
+            <input type="date" name="date" required />
+            <input type="time" name="heureDepart" required />
+            <input type="time" name="heureArrivee" required />
+            <input type="number" name="participation" placeholder="Participation (€)" min="0" step="0.01" required />
+            <input type="text" name="points_intermediaires" placeholder="Point(s) de covoiturage intermédiaire(s)" />
+            <select name="typeTrajet" required>
+                <option value="">Type de voyage</option>
+                <option value="aller_retour">Aller/Retour</option>
+                <option value="aller_simple">Aller simple</option>
+                <option value="retour_simple">Retour simple</option>
+            </select>
+            <input type="number" name="nbr_place" placeholder="Places disponibles" min="1" required />
+            <button type="submit">Publier l'annonce</button>
+        </form>
+    </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<main class="form-container">
+    <div class="card">
+        <h2>Proposer un covoiturage</h2>
+
+        <form method="post" action="index.php?route=submit_ride">
+            <input type="text" name="depart" placeholder="Lieu de départ (adresse ou GPS)" required>
+            <input type="datetime-local" name="datetime_depart" required>
+            <input type="number" name="price" placeholder="Participation (€)" min="0" required>
+            <input type="text" name="intermediate_points" placeholder="Point(s) de covoiturage intermédiaire(s)">
+            <input type="time" name="arrival_time" placeholder="Heure d'arrivée" required>
+
+            <select name="trip_type" required>
+                <option value="">Type de voyage</option>
+                <option value="aller_retour">Aller/Retour</option>
+                <option value="aller_simple">Aller simple</option>
+                <option value="retour_simple">Retour simple</option>
+            </select>
+
+            <input type="number" name="seats_available" placeholder="Places disponibles" min="1" required>
+
+            <button type="submit">Publier l'annonce</button>
+        </form>
+    </div>
+</main>

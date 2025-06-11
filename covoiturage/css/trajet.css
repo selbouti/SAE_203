@@ -1,0 +1,108 @@
+/* Corps et structure de la page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header, footer {
+    background-color: #cc002c;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* Style pour le tableau */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* En-têtes du tableau */
+th {
+    background-color: #a01d06;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Style pour les lignes du tableau */
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Lignes alternées */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Effet au survol des lignes */
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Bordures au survol des cellules */
+td:hover {
+    background-color: #eef2f7;
+}
+
+/* Réduction de l'espace entre les cellules */
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+/* Style de l'alignement des cellules si nécessaire */
+td, th {
+    padding: 10px 15px;
+}
+
+/* Mise en forme des bordures du tableau */
+table {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Réponse aux petits écrans */
+@media screen and (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
+}
+
+/* Style du bouton Réserver */
+table form button {
+    background-color: #cc002c;       /* même rouge que header/footer */
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Effet au survol du bouton */
+table form button:hover {
+    background-color: #a01d06;       /* couleur plus foncée au hover */
+}
+
+/* Optionnel : léger effet d’ombre sur le bouton */
+table form button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(204, 0, 44, 0.5);
+}
