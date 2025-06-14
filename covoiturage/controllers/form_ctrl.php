@@ -7,6 +7,18 @@ function form_submit_ctrl() {
         header("Location: index.php?route=login"); 
         exit;
     }
+    
+    global $pdo;
+    $uid = $_SESSION['uid'];
+    
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM etudiant WHERE id = ?");
+    $stmt->execute([$uid]);
+    $exists = $stmt->fetchColumn();
+
+    if ($exists) {
+        header("Location: index.php?route=trajets");
+        exit;
+    }
     require(__DIR__ . '/../config/conf.php');
 
     $uid = $_SESSION['uid'];
