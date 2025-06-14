@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Trajets du jour</title>
-    <link rel="stylesheet" href="/dev/SAE_R203-main/SAE203_FULL/css/trajet.css">
+    <link rel="stylesheet" href="/dev/SAE_203/covoiturage/css/trajet.css">
 </head>
 <body>
     <h1>Trajets disponibles aujourd’hui</h1>
 
     <?php
     // Inclusion du contrôleur qui fournit la variable $trajets
-    require_once '/var/www/html/dev/SAE_R203-main/SAE203_FULL/controllers/trajet_controle.php';
+    require_once __DIR__ . '/../controllers/trajet_controle.php';
 
     // Fonction d'affichage des trajets
     function affiche_trajets($trajets) {
+        
         foreach ($trajets as $trajet) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($trajet['heureDepart']) . "</td>";
@@ -53,7 +54,7 @@
                 echo "<td>";
                 // Formulaire de réservation pour ce trajet
                 ?>
-                <form action="index.php?action=reserver_trajet" method="post" style="margin:0;">
+                <form action="index.php?route=reserver_trajet" method="post" style="margin:0;">
                     <input type="hidden" name="trajet_id" value="<?= htmlspecialchars($trajet['id']) ?>">
                     <button type="submit">Réserver</button>
                 </form>

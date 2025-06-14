@@ -29,12 +29,13 @@ switch ($route) {
         break;
     case 'trajets':
             require('controllers/trajet_controle.php');
+            echo __DIR__;
             break;
     case 'rides':
             require('controllers/ride_ctrl.php');
             require('views/proposer.php');
             handleRideSubmission();
-        case 'reserver_trajet':
+    case 'reserver_trajet':
         require 'controllers/reservation_controle.php';
             ctrl_reserver_trajet();
         break;

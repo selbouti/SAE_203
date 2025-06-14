@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../models/trajet_controle.php');
+require_once(__DIR__ . '/../controllers/trajet_controle.php');
 
 
 
@@ -15,8 +15,8 @@ function ctrl_reserver_trajet() {
     
     $pdo = connection();
 
-    require_once __DIR__ . '/../crud/crud_trajet.php';
-    require_once __DIR__ . '/../crud/crud_reservation.php';
+    require_once __DIR__ . '/../models/trajet_model.php';
+    require_once __DIR__ . '/../models/ajouter_reservation.php';
 
     // GET: afficher la confirmation avant validation
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['trajet_id'])) {

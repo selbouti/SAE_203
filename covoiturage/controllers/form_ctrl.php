@@ -2,7 +2,7 @@
 function form_submit_ctrl() {
     if (session_status() === PHP_SESSION_NONE) {
         session_start();}
-    require('/var/www/html/dev/SAE_203/covoiturage/config/conf.php');
+    require(__DIR__ . '/../config/conf.php');
 
     $uid = $_SESSION['uid'];
     $nom_complet = $_POST['nom'];

@@ -1,6 +1,6 @@
 <?php
-require_once('/var/www/html/dev/SAE_203/covoiturage/models/ldap_model.php');
-require_once('/var/www/html/dev/SAE_203/covoiturage/config/conf.php');
+require_once(__DIR__ . '/../models/ldap_model.php');
+require_once(__DIR__ . '/../config/conf.php');
 
 function login_ctrl() {
     $login = $_POST['login'] ?? '';
