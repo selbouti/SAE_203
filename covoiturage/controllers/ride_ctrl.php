@@ -12,13 +12,13 @@ function handleRideSubmission() {
         $heureDepart = $_POST['heureDepart'];
         $heureArrivee = $_POST['heureArrivee'];
         $nbr_place = $_POST['nbr_place'];
-        $id_conducteur = 1; // à adapter selon la session utilisateur
+        $id_conducteur = 22409169; // à adapter selon la session utilisateur
         
         $participation = $_POST['participation'];
         $typeTrajet = $_POST['typeTrajet'];
         $points_intermediaires = $_POST['points_intermediaires'];
 
-        $success = createTrajet($lieuDepart, $gpsDepart, $lieuArrivee, $gpsArrivee, $date, $heureDepart, $heureArrivee, $nbr_place, $id_conducteur, $participation, $typeTrajet, $points_intermediaires);
+        $success = createTrajet($id,$lieuDepart, $gpsDepart, $lieuArrivee, $gpsArrivee, $date, $heureDepart, $heureArrivee, $nbr_place, $id_conducteur, $participation, $typeTrajet, $points_intermediaires);
 
         if ($success) {
             header('Location: index.php?route=trajets');
