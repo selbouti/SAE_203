@@ -2,6 +2,11 @@
 function form_submit_ctrl() {
     if (session_status() === PHP_SESSION_NONE) {
         session_start();}
+    
+     if (!isset($_SESSION['uid'])) {
+        header("Location: index.php?route=login"); 
+        exit;
+    }
     require(__DIR__ . '/../config/conf.php');
 
     $uid = $_SESSION['uid'];
