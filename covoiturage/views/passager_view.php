@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
- <meta charset="UTF-8">
- <title>Accueil Passager</title>
- <link rel="stylesheet" href="/public/css/style.css">
+  <meta charset="UTF-8">
+  <title>Accueil Passager</title>
+  <link rel="stylesheet" href="lobby.css">
 </head>
-<body>
-<header class="navbar">
- <div class="logo">
- <img src="/public/images/logo.png" alt="Logo">
- <span>Covoiturage</span>
- </div>
- <ul class="nav-links">
- <li><a href="index.php?route=trajets">Voir les trajets</a></li>
- <li><a href="index.php?route=reservations">Mes réservations</a></li>
- <li><a href="index.php?route=logout">Déconnexion</a></li>
- </ul>
-</header>
+<body class="bg">
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="background.png" alt="Logo" class="logo">
+      <span>Covoiturage</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.php?route=trajets">Voir les trajets</a>
+      <a href="index.php?route=mes_reservations">Mes réservations</a>
+      <a href="index.php?route=messagerie">Messagerie</a>
+      <a href="index.php?route=login">Déconnexion</a>
+    </div>
+  </nav>
 
-<main class="home-content">
- <h1>Bienvenue Passager</h1>
- <p>Recherchez un trajet, réservez une place et profitez du voyage !</p>
- <a class="btn-primary" href="index.php?route=trajets">Voir les trajets</a>
-</main>
+  <div class="home-content">
+    <h1>Bienvenue Passager 🧍‍♂️</h1>
+    <p>Réservez vos trajets facilement et partez à l’aventure universitaire !</p>
+    <a href="index.php?route=trajets" class="btn">Voir les trajets</a>
+  </div>
 </body>
 </html>
