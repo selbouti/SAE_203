@@ -51,7 +51,15 @@ switch ($route) {
  case 'reservation_success':
  require 'views/confirmation_succes.php';
  break;
- 
+ case 'send_message':
+    require('controllers/message_ctrl.php');
+    add_message_ctrl();
+    break;
+
+case 'list_messages':
+    require('controllers/message_ctrl.php');
+    list_messages_ctrl();
+    break;
  
  default:
  require('views/404_view.php');
