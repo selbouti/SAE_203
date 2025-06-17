@@ -1,39 +1,38 @@
-<?php
-function form_submit_ctrl() {
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();}
-    
-     if (!isset($_SESSION['uid'])) {
-        header("Location: index.php?route=login"); 
-        exit;
-    }
-    
-    global $pdo;
-    $uid = $_SESSION['uid'];
-    
-    #$stmt = $pdo->prepare("SELECT COUNT(*) FROM etudiant WHERE id = ?");
-    #$stmt->execute([$uid]);
-    #$exists = $stmt->fetchColumn();
+ <?php
+ function form_submit_ctrl() {
+ if (session_status() === PHP_SESSION_NONE) {
+ session_start();}
+ 
+ if (!isset($_SESSION['uid'])) {
+ header("Location: index.php?route=login"); 
+ exit;
+ }
+ require(__DIR__ . '/../config/conf.php');
+ global $pdo;
+ $uid = $_SESSION['uid'];
+ 
+ $stmt = $pdo->prepare("SELECT COUNT(*) FROM etudiant WHERE id = ?");
+ $stmt->execute([$uid]);
+ $exists = $stmt->fetchColumn();
 
-    #if ($exists) {
-    #    header("Location: index.php?route=trajets");
-    #    exit;
-    #}
-    require(__DIR__ . '/../config/conf.php');
-    require(__DIR__ . '/../controllers/auth_ctrl.php');
-    $login=$_SESSION['login'];
-    $nom_complet = $_POST['nom'];
-    $sujet = $_POST['sujet'];
-    $adresse = $_POST['adresse'];
-    $gps = $_POST['gps'];
-    $departement = $_POST['departement'];
-    $niveau = $_POST['niveau'];
-    $email= 'elboutisoufiane@gmail.com';
-    
+ if ($exists) {
+ header("Location: index.php?route=home");
+ exit;
+ }
+ 
 
-    $stmt = $pdo->prepare("INSERT INTO etudiant (id, nom, role, adresse, gps, departement, niveau,email) VALUES (?, ?, ?, ?, ?, ?, ?,?)");
-    $stmt->execute([$login, $nom_complet, $sujet, $adresse, $gps, $departement, $niveau,$email]);
+ $uid = $_SESSION['uid'];
+ $nom_complet = $_POST['nom'];
+ $sujet = $_POST['sujet'];
+ $adresse = $_POST['adresse'];
+ $gps = $_POST['gps'];
+ $email = $_POST['email'];
+ $departement = $_POST['departement'];
+ $niveau = $_POST['niveau'];
 
-    header("Location: index.php?route=trajets");
-    exit;
-}
+ $stmt = $pdo->prepare("INSERT INTO etudiant (id, nom, role, adresse, gps, departement, niveau) VALUES (?, ?, ?, ?, ?, ?, ?)");
+ $stmt->execute([$uid, $nom_complet, $sujet, $adresse, $gps, $departement, $niveau]);
+
+ header("Location: index.php?route=home");
+ exit;
+ }
