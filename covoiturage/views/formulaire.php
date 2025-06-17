@@ -11,7 +11,7 @@
 
 <body>
   <div class="contactez-nous">
-    <img src="assets/images/logo.png" alt="Logo Université de Poitiers" class="logo-form" />
+    <img src="/dev/SAE_203/covoiturageimages/logo.png" alt="Logo Université de Poitiers" class="logo-form" />
     <h1>Fiche d'inscription</h1>
     <p>
       Prêt(e) à rejoindre la communauté du covoiturage universitaire ? Remplis
