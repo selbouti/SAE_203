@@ -18,7 +18,7 @@ function login_ctrl() {
         $_SESSION['nom'] = $nom;
 
         $stmt = $pdo->prepare("SELECT COUNT(*) FROM etudiant WHERE id = ?");
-        $stmt->execute([$uid]);
+        $stmt->execute([$_SESSION['login']]);
         $exists = $stmt->fetchColumn();
 
         if ($exists) {

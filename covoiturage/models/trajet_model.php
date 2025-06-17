@@ -7,8 +7,7 @@ function getTrajetsDuJour($connexion) {
                 t.heureDepart,
                 t.heureArrivee,
                 t.nbr_place,
-                e.nom AS nom_conducteur,
-                e.prenom AS prenom_conducteur
+                e.nom AS nom_conducteur
             FROM trajet t
             LEFT JOIN etudiant e ON t.id_conducteur = e.id
             ORDER BY t.heureDepart";

@@ -28,9 +28,11 @@ function form_submit_ctrl() {
     $gps = $_POST['gps'];
     $departement = $_POST['departement'];
     $niveau = $_POST['niveau'];
+    $email= 'elboutisoufiane@gmail.com';
+    
 
-    $stmt = $pdo->prepare("INSERT INTO etudiant (id, nom, role, adresse, gps, departement, niveau) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$login, $nom_complet, $sujet, $adresse, $gps, $departement, $niveau]);
+    $stmt = $pdo->prepare("INSERT INTO etudiant (id, nom, role, adresse, gps, departement, niveau,email) VALUES (?, ?, ?, ?, ?, ?, ?,?)");
+    $stmt->execute([$login, $nom_complet, $sujet, $adresse, $gps, $departement, $niveau,$email]);
 
     header("Location: index.php?route=trajets");
     exit;
