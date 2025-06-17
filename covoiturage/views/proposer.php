@@ -17,9 +17,9 @@ require('header.php');
             <input type="number" name="participation" step="0.01" placeholder="Participation (€)" required>
             <input type="number" name="nbr_place" placeholder="Nombre de places" required>
             <select name="typeTrajet" required>
-                <option value="aller_simple">Aller simple</option>
-                <option value="retour_simple">Retour simple</option>
-                <option value="aller_retour">Aller / Retour</option>
+                <option value="Aller">Aller simple</option>
+                <option value="Retour">Retour simple</option>
+                <option value="Aller_Retour">Aller / Retour</option>
             </select>
             <input type="text" name="points_intermediaires" placeholder="Points intermédiaires (séparés par ,)">
             <button type="submit">Valider le trajet</button>

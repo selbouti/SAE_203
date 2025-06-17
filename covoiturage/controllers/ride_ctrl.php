@@ -13,8 +13,7 @@ function handleRideSubmission() {
         $heureDepart = $_POST['heureDepart'];
         $heureArrivee = $_POST['heureArrivee'];
         $nbr_place = $_POST['nbr_place'];
-        $id_conducteur = $_SESSION['login']; // à adapter selon la session utilisateur
-        
+        $id_conducteur = $_SESSION['login']; 
         $participation = $_POST['participation'];
         $typeTrajet = $_POST['typeTrajet'];
         $points_intermediaires = $_POST['points_intermediaires'];

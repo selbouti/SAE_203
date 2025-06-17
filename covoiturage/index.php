@@ -8,6 +8,10 @@ $route = $_GET['route'] ?? null;
 
 switch ($route) {
  case null:
+ case 'home':
+        require 'controllers/home_ctrl.php';
+        home_ctrl();
+        break;
  case 'login':
  require('views/login_view.php');
  login_view();
@@ -48,10 +52,7 @@ switch ($route) {
  require 'views/confirmation_succes.php';
  break;
  
- case 'home':
- require 'controllers/home_ctrl.php';
- home_ctrl();
- break;
+ 
  default:
  require('views/404_view.php');
  break;
