@@ -1,8 +1,8 @@
-</article>
+</main>
 
-<footer>
-    <span>Conception V. Verdon Company for R&T Châtellerault - 2024</span>
-    <img src="./images/rt.png" alt="R&T" />
+<footer style="margin-top: 40px; padding: 15px 0; background-color: #f2f2f2; text-align: center; font-size: 14px;">
+    <p>&copy; <?= date('Y') ?> - SAE203 - Covoiturage Étudiant - IUT de Châtellerault</p>
+    <p>Développé par : E.Sofian, Gatlin.A, N.Roland, Lounes, ohma</p>
 </footer>
 
 </body>
