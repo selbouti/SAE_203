@@ -8,6 +8,7 @@
  exit;
  }
  require(__DIR__ . '/../config/conf.php');
+ require(__DIR__ . '/../controllers/auth_ctrl.php');
  global $pdo;
  $uid = $_SESSION['uid'];
  
@@ -21,7 +22,7 @@
  }
  
 
- $uid = $_SESSION['uid'];
+ $uid = $_SESSION['login'];
  $nom_complet = $_POST['nom'];
  $sujet = $_POST['sujet'];
  $adresse = $_POST['adresse'];

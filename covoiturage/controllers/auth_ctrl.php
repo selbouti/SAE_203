@@ -22,7 +22,7 @@ function login_ctrl() {
         $exists = $stmt->fetchColumn();
 
         if ($exists) {
-            header("Location: index.php?route=trajets");
+            header("Location: index.php?route=home");
         } else {
             header("Location: index.php?route=formulaire");
         }

@@ -29,7 +29,6 @@ switch ($route) {
  break;
  case 'trajets':
  require('controllers/trajet_controle.php');
- echo __DIR__;
  break;
  case 'rides':
  require('controllers/ride_ctrl.php');
@@ -51,6 +50,7 @@ switch ($route) {
  
  case 'home':
  require 'controllers/home_ctrl.php';
+ home_ctrl();
  break;
  default:
  require('views/404_view.php');

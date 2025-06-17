@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Accueil Conducteur</title>
-  <link rel="stylesheet" href="lobby.css">
+  <link rel="stylesheet" href="/dev/SAE_203/covoiturage/css/lobby.css">
 </head>
 <body class="bg">
   <nav class="navbar">
     <div class="logo-container">
-      <img src="background.png" alt="Logo" class="logo">
+      <img src="/dev/SAE_203/covoiturage/images/background.png" alt="Logo" class="logo">
       <span>Covoiturage</span>
     </div>
     <div class="nav-links">
