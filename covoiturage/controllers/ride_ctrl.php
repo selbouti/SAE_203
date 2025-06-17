@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__ . '/../models/crud.php');
+require(__DIR__ . '/../controllers/auth_ctrl.php');
 
 function handleRideSubmission() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,7 +13,7 @@ function handleRideSubmission() {
         $heureDepart = $_POST['heureDepart'];
         $heureArrivee = $_POST['heureArrivee'];
         $nbr_place = $_POST['nbr_place'];
-        $id_conducteur = 22409169; // à adapter selon la session utilisateur
+        $id_conducteur = $_SESSION['login']; // à adapter selon la session utilisateur
         
         $participation = $_POST['participation'];
         $typeTrajet = $_POST['typeTrajet'];

@@ -2,17 +2,6 @@
 require('header.php');
 ?>
 
-<div class="navbar">
-    <div class="navbar-left">
-        <span class="logo">Lalacar</span>
-    </div>
-    <div class="search-icon">🔍</div>
-    <button class="logout-btn">Se déconnecter</button>
-</div>
-
-<div class="logo-banner">
-    <img src="images/logos-meta-20.png" alt="Logo" style="max-height: 80px; display: block; margin: 20px auto;">
-</div>
 
 <div class="form-container">
     <div class="card">
