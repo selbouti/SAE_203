@@ -10,7 +10,7 @@
   <div class="container" id="container">
     <div class="form-container sign-in-container">
       <form action="index.php?route=auth" method="POST">
-        <img src="/dev/SAE_R203/SAE203_FULL/images/logo.png" class="logo-form" alt="Logo">
+        <img src="/dev/SAE_203/covoiturage/images/logo.png" class="logo-form" alt="Logo">
         <h1>Connexion</h1>
         <input type="text" name="login" placeholder="Login Universitaire" required>
         <input type="password" name="pass" placeholder="Mot de passe" required>
