@@ -1,26 +1,43 @@
-<?php 
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <title>Appli procédures</title>
-    <link rel="stylesheet" href="css/global.css" />
-    <link rel="stylesheet" href="css/prjet.css" />
+    <meta charset="UTF-8">
+    <title>Covoiturage Étudiant - IUT Châtellerault</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/prjet.css">
 </head>
 <body>
 <header>
-    <a href="index.php"><img src="images/idea.png" alt="Retour vers la page d'accueil" /></a>
-    <h1>Application "Procédures"</h1>
-    <h2>Base de données de résolution de pannes</h2>
+    <a href="index.php"><img src="images/idea.png" alt="Accueil" style="height: 50px;" /></a>
+    <div>
+        <h1>Application de Covoiturage Étudiant</h1>
+        <h2>IUT de Châtellerault - Département R&T</h2>
+    </div>
 </header>
-<a id="logout" href="index.php?route=logout">Déconnexion</a>
+
+<nav>
+    <ul>
+        <li><a href="index.php">Accueil</a></li>
+        <li><a href="index.php?page=trajets">Trajets</a></li>
+        <li><a href="index.php?page=reservation">Réservations</a></li>
+        <li><a href="index.php?page=profil">Profil</a></li>
+        <li><a href="index.php?page=logout">Déconnexion</a></li>
+    </ul>
+</nav>
 
 <?php 
 if (!empty($_SESSION['notification'])) {
-    echo '<div id="notification">' . $_SESSION['notification'] . '</div>';
+    echo '<div id="notification">' . htmlspecialchars($_SESSION['notification']) . '</div>';
     unset($_SESSION['notification']);
 }
 ?>
 
-<article>
+<main>
