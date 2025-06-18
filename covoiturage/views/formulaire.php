@@ -29,8 +29,7 @@
 <label for="adresse">Adresse complète</label>
 <input type="text" id="adresse" name="adresse" placeholder="Ex : 21 rue de Thuré" required />
 
-<label for="nom">Nom et prénom</label>
-<input type="text" id="nom" name="nom" placeholder="Saisir votre nom" required />
+
 
 <label for="email">Adresse e-mail</label>
 <input type="email" id="email" name="email" placeholder="Ex : prenom.nom@etu.univ-poitiers.fr" required />
@@ -47,18 +46,4 @@
 </select>
 
 <label for="niveau">Niveau</label>
-<select name="niveau" id="niveau" required>
-<option value="" disabled selected hidden>Choisissez votre niveau</option>
-<option value="but1">BUT1</option>
-<option value="but2">BUT2</option>
-<option value="but3">BUT3</option>
-</select>
-
-<button type="submit">Envoyer</button>
-</form>
- </div>
-<script src="assets/js/script.js"></script>
-</body>
-</html>
-<?php } ?>
-
+<select name="n
