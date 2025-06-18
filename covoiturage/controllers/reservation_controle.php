@@ -72,3 +72,70 @@ function ctrl_confirmation_succes() {
     echo "<h2> Réservation confirmée avec succès !</h2>";
     echo "<a href='index.php'>Retour à l'accueil</a>";
 }
+
+
+
+// --------- coté conducteur  -----------
+
+
+
+
+
+function ctrl_mes_trajets() {
+    session_start();
+
+    if (!isset($_SESSION['uid'])) {
+        header('Location: index.php?route=login');
+        exit;
+    }
+
+    $pdo = connection();
+    $conducteur_id = $_SESSION['login'];
+
+    $trajets = get_trajets_par_conducteur($pdo, $conducteur_id);
+    mes_trajets_view($trajets);
+}
+
+function ctrl_reservations_trajet() {
+    session_start();
+
+    if (!isset($_SESSION['uid']) || !isset($_GET['trajet_id'])) {
+        header('Location: index.php?route=login');
+        exit;
+    }
+
+    $pdo = connection();
+    $trajet_id = (int) $_GET['trajet_id'];
+
+    $reservations = get_reservations_par_trajet($pdo, $trajet_id);
+    reservations_par_trajet_view($trajet_id, $reservations);
+}
+
+function ctrl_changer_statut() {
+    session_start();
+
+    if (!isset($_SESSION['uid']) || !isset($_POST['id']) || !isset($_POST['statut']) || !isset($_POST['trajet_id'])) {
+        header('Location: index.php?route=login');
+        exit;
+    }
+
+    $pdo = connection();
+
+    $reservation_id = (int) $_POST['id'];
+    $trajet_id = (int) $_POST['trajet_id'];
+    $statut = $_POST['statut'];
+
+    //  Mise à jour du statut de la réservation
+    if (changer_statut_reservation($pdo, $reservation_id, $statut)) {
+        //  Si acceptée, on décrémente les places
+        if ($statut === 'Acceptee') {
+            decrementer_places($pdo, $trajet_id);
+        }
+    }
+
+    //  Redirection vers la page des réservations de ce trajet
+    header("Location: index.php?route=voir_reservations&trajet_id=" . $trajet_id);
+    exit;
+}
+
+
