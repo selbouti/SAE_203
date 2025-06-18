@@ -1,7 +1,8 @@
 <?php
 // controllers/message_ctrl.php
-require_once(__DIR__ . '/../models/message_model.php');
+require_once(__DIR__ . '/../models/message_crud.php');
 require_once(__DIR__ . '/../config/conf.php');
+require(__DIR__ . '/../controllers/auth_ctrl.php');
 
 function has_access_to_message($user_id, $trajet_id, $destinataire_id) {
     global $pdo;
@@ -28,14 +29,15 @@ function has_access_to_message($user_id, $trajet_id, $destinataire_id) {
 }
 
 function add_message_ctrl() {
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();}
     global $pdo;
 
     $trajet_id = $_POST['trajet_id'] ?? null;
     $destinataire_id = $_POST['destinataire_id'] ?? null;
     $contenu = $_POST['contenu'] ?? '';
     $type_message = $_POST['type_message'] ?? 'AvantReservation';
-    $expediteur_id = $_SESSION['uid'] ?? null;
+    $expediteur_id = $_SESSION['login'] ?? null;
 
     if (!$trajet_id || !$destinataire_id || !$expediteur_id || !$contenu) {
         echo "<p>Paramètres manquants.</p>";
@@ -52,8 +54,9 @@ function add_message_ctrl() {
 }
 
 function list_messages_ctrl() {
-    session_start();
-    $user_id = $_SESSION['uid'] ?? null;
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();}
+    $user_id = $_SESSION['login'] ?? null;
     $trajet_id = $_GET['trajet_id'] ?? null;
 
     if (!$user_id || !$trajet_id) {

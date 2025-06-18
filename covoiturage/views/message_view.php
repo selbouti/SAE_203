@@ -1,6 +1,7 @@
 <?php
+ require(__DIR__ . '/../controllers/auth_ctrl.php');
 function messages_view($messages, $trajet_id) {
-    $user_id = $_SESSION['uid'];
+    $user_id = $_SESSION['login'];
     echo "<h2>Messagerie pour le trajet $trajet_id</h2>";
     echo "<div>";
     foreach ($messages as $msg) {

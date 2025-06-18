@@ -58,6 +58,10 @@ switch ($route) {
     require('controllers/message_ctrl.php');
     add_message_ctrl();
     break;
+case 'message':
+    require('views/message_view.php');
+    add_message_ctrl();
+    break;
 
 case 'list_messages':
     require('controllers/message_ctrl.php');
