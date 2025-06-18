@@ -5,7 +5,6 @@ require_once(__DIR__ . '/../models/trajet_model.php');
 require_once(__DIR__ . '/../models/ajouter_reservation.php');
 require_once(__DIR__ . '/../views/confirmation_reservation.php');
 
-
 function ctrl_reserver_trajet() {
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -18,7 +17,7 @@ function ctrl_reserver_trajet() {
 
     $pdo = connection();
 
-    // ----- GET : afficher la confirmation -----
+    // -----  afficher la confirmation -----
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['trajet_id'])) {
         $trajet_id = (int) $_GET['trajet_id'];
         $trajet = find_trajet_by_id($pdo, $trajet_id);
@@ -32,23 +31,21 @@ function ctrl_reserver_trajet() {
         return;
     }
 
-    // ----- POST : valider la réservation -----
+    // ----- valider la réservation -----
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
         $trajet_id = (int) $_POST['trajet_id'];
         $passager_id = $_SESSION['login'];
 
         $trajet = find_trajet_by_id($pdo, $trajet_id);
-        if (!$trajet || $trajet['nbr_place'] <= 0) {
-            echo " Plus de places disponibles.";
+        if (!$trajet) {
+            echo "Erreur : trajet inexistant.";
             exit;
         }
-
         if (ajouter_reservation($pdo, $trajet_id, $passager_id)) {
-            decrementer_places($pdo, $trajet_id);
             header('Location: index.php?route=reservation_success');
             exit;
         } else {
-            echo " Erreur lors de la réservation.";
+            echo "Erreur lors de la réservation.";
         }
     } else {
         echo "Requête invalide.";
@@ -72,5 +69,6 @@ function ctrl_mes_reservations() {
 }
 
 function ctrl_confirmation_succes() {
-    require_once(__DIR__ . '/../views/confirmation_succes.php');
+    echo "<h2> Réservation confirmée avec succès !</h2>";
+    echo "<a href='index.php'>Retour à l'accueil</a>";
 }
