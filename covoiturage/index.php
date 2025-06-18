@@ -73,8 +73,10 @@ case 'changer_statut':
     add_message_ctrl();
     break;
 case 'message':
+    if ($_GET['route'] === 'message') {
+        $trajet_id = $_GET['trajet_id'] ?? null;}
     require('views/message_view.php');
-    add_message_ctrl();
+    afficher_formulaire_message($trajet_id);
     break;
 
 case 'list_messages':

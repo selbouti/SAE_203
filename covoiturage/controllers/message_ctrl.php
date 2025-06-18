@@ -33,12 +33,11 @@ function add_message_ctrl() {
         session_start();}
     global $pdo;
 
-    $trajet_id = $_POST['trajet_id'] ?? null;
-    $destinataire_id = $_POST['destinataire_id'] ?? null;
-    $contenu = $_POST['contenu'] ?? '';
-    $type_message = $_POST['type_message'] ?? 'AvantReservation';
-    $expediteur_id = $_SESSION['login'] ?? null;
-
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
+        $trajet_id = (int) $_POST['trajet_id'];
+        $passager_id = $_SESSION['login'];
+        $destinataire_id= recuperer_donnees($trajet_id);
+        $contenu = trim($_POST['contenu']);
     if (!$trajet_id || !$destinataire_id || !$expediteur_id || !$contenu) {
         echo "<p>Paramètres manquants.</p>";
         return;
@@ -66,4 +65,5 @@ function list_messages_ctrl() {
 
     $messages = get_messages_for_user_and_trajet($trajet_id, $user_id);
     require(__DIR__ . '/../views/messages_view.php');
+}
 }

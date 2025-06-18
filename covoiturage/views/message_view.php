@@ -12,15 +12,18 @@ function messages_view($messages, $trajet_id) {
         echo "</div>";
     }
     echo "</div>";
-
+}
+function afficher_formulaire_message($trajet_id, $type_message = "AvantReservation") {
     echo <<<HTML
+    <h2>Envoyer un message</h2>
     <form method="POST" action="index.php?route=send_message">
         <input type="hidden" name="trajet_id" value="$trajet_id">
-        <input type="hidden" name="destinataire_id" value="(À définir dynamiquement)">
-        <input type="hidden" name="type_message" value="AvantReservation">
-        <textarea name="contenu" placeholder="Votre message..." required></textarea><br>
+        <input type="hidden" name="type_message" value="$type_message">
+
+        <label for="contenu">Message :</label><br>
+        <textarea name="contenu" id="contenu" rows="4" cols="50" placeholder="Votre message..." required></textarea><br><br>
+
         <button type="submit">Envoyer</button>
     </form>
 HTML;
 }
-messages_view($messages, $trajet_id);
