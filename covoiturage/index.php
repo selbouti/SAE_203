@@ -53,6 +53,20 @@ switch ($route) {
        require 'controllers/reservation_controle.php';
        ctrl_confirmation_succes();
        break;
+ case 'mes_trajets':
+       require 'controllers/reservation_controle.php';
+       ctrl_mes_trajets();
+       break;
+          
+case 'voir_reservations':
+       require 'controllers/reservation_controle.php';
+       ctrl_reservations_trajet();
+       break;
+          
+case 'changer_statut':
+       require 'controllers/reservation_controle.php';
+       ctrl_changer_statut();
+       break;
    
  case 'send_message':
     require('controllers/message_ctrl.php');
