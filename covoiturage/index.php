@@ -40,17 +40,20 @@ switch ($route) {
  handleRideSubmission();
  break;
  case 'reserver_trajet':
- require 'controllers/reservation_controle.php';
- ctrl_reserver_trajet();
- break;
-
- case 'confirmation_reservation':
- require 'views/confirmation_reservation.php';
- break;
- 
- case 'reservation_success':
- require 'views/confirmation_succes.php';
- break;
+       require 'controllers/reservation_controle.php';
+       ctrl_reserver_trajet();
+       break;
+   
+   case 'mes_reservations':
+       require 'controllers/reservation_controle.php';
+       ctrl_mes_reservations();
+       break;
+   
+   case 'reservation_success':
+       require 'controllers/reservation_controle.php';
+       ctrl_confirmation_succes();
+       break;
+   
  case 'send_message':
     require('controllers/message_ctrl.php');
     add_message_ctrl();
