@@ -13,6 +13,24 @@ function ajouter_reservation(PDO $connex, int $id_trajet, string $id_passager) {
     return $result;
 }
 
+function deja_reserve_ce_type_aujourdhui(PDO $connex, string $id_passager, string $type_trajet): bool {
+    $sql = "SELECT COUNT(*) 
+            FROM reservation 
+            WHERE id_passager = :id_passager 
+              AND type_trajet = :type_trajet 
+              AND DATE(dateReservation) = CURDATE()";
+
+    $stmt = $connex->prepare($sql);
+    $stmt->bindValue(':id_passager', $id_passager, PDO::PARAM_STR);
+    $stmt->bindValue(':type_trajet', $type_trajet, PDO::PARAM_STR);
+    $stmt->execute();
+
+    $count = $stmt->fetchColumn();
+    $stmt->closeCursor();
+
+    return $count > 0;
+}
+
 
 
 function find_trajet_by_id(PDO $pdo, int $id) {
