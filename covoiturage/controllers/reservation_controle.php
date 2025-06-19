@@ -45,9 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
     if (ajouter_reservation($pdo, $trajet_id, $passager_id)) {
         header('Location: index.php?route=reservation_success');
         exit;
-    } else {
-        echo "Erreur lors de la réservation.";
-    }
+    } 
 }
 
 
