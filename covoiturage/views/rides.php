@@ -11,15 +11,15 @@ $rides = getAllRides();
 
         <?php foreach ($rides as $ride): ?>
             <div style="border-bottom:1px solid #ccc; padding:10px 0;">
-                <strong>Départ :</strong> <?= htmlspecialchars($ride['lieuDepart']) ?><br>
-                <strong>Date :</strong> <?= htmlspecialchars($ride['date']) ?><br>
-                <strong>Heure de départ :</strong> <?= htmlspecialchars($ride['heureDepart']) ?><br>
-                <strong>Lieu d’arrivée :</strong> <?= htmlspecialchars($ride['lieuArrivee']) ?><br>
-                <strong>Heure d’arrivée :</strong> <?= htmlspecialchars($ride['heureArrivee']) ?><br>
-                <strong>Participation :</strong> <?= htmlspecialchars($ride['participation']) ?> €<br>
-                <strong>Points intermédiaires :</strong> <?= htmlspecialchars($ride['points_intermediaires']) ?><br>
-                <strong>Type :</strong> <?= htmlspecialchars($ride['typeTrajet']) ?><br>
-                <strong>Places :</strong> <?= htmlspecialchars($ride['nbr_place']) ?><br>
+                <strong>Départ :</strong> <?= $ride['lieuDepart'] ?><br>
+                <strong>Date :</strong> <?= $ride['date'] ?><br>
+                <strong>Heure de départ :</strong> <?= $ride['heureDepart'] ?><br>
+                <strong>Lieu d’arrivée :</strong> <?= $ride['lieuArrivee'] ?><br>
+                <strong>Heure d’arrivée :</strong> <?= $ride['heureArrivee'] ?><br>
+                <strong>Participation :</strong> <?= $ride['participation'] ?> €<br>
+                <strong>Points intermédiaires :</strong> <?= $ride['points_intermediaires'] ?><br>
+                <strong>Type :</strong> <?= $ride['typeTrajet'] ?><br>
+                <strong>Places :</strong> <?= $ride['nbr_place'] ?><br>
             </div>
         <?php endforeach; ?>
     </div>
