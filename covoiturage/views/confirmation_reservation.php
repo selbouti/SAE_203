@@ -19,6 +19,20 @@ function confirmation_reservation_view(array $trajet) {
     echo "</form>";
 }
 
+
+
+function erreur_reservation_view(string $type_trajet) {
+    require('views/header.php');
+
+    echo "<h2 style='color:red;'>❌ Réservation non autorisée</h2>";
+    echo "<p>Vous avez déjà réservé un trajet <strong>$type_trajet</strong> aujourd'hui.</p>";
+    echo "<p>Un seul trajet <em>Aller</em> et un seul trajet <em>Retour</em> sont autorisés par jour.</p>";
+    echo "<a href='index.php'>⬅ Retour à l'accueil</a>";
+
+    require('views/footer.php');
+}
+
+
 function mes_reservations_view(array $reservations) {
     echo "<h2> Mes réservations</h2>";
 
