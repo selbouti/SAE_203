@@ -35,10 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
     $passager_id = $_SESSION['login'];
 
     $trajet = find_trajet_by_id($pdo, $trajet_id);
-    if (!$trajet) {
-        echo "Erreur : trajet inexistant.";
-        exit;
-    }
 
     $type_trajet = $trajet['typeTrajet'];
 
