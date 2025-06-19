@@ -34,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
     $trajet_id = (int) $_POST['trajet_id'];
     $passager_id = $_SESSION['login'];
 
-    $trajet = find_trajet_by_id($pdo, $trajet_id);
 
     $type_trajet = $trajet['typeTrajet'];
 
