@@ -1,11 +1,13 @@
 <?php
 
-require_once(__DIR__ . '/../config/conf.php');
+
 require_once(__DIR__ . '/../models/trajet_model.php');
-require_once(__DIR__ . '/../models/ajouter_reservation.php');
-require_once(__DIR__ . '/../views/confirmation_reservation.php');
 
 function ctrl_reserver_trajet() {
+    require_once(__DIR__ . '/../models/ajouter_reservation.php');
+    require_once(__DIR__ . '/../config/conf.php');
+    require_once(__DIR__ . '/../views/confirmation_reservation.php');
+    
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -53,6 +55,8 @@ function ctrl_reserver_trajet() {
 }
 
 function ctrl_mes_reservations() {
+    require_once(__DIR__ . '/../config/conf.php');
+    require_once(__DIR__ . '/../models/ajouter_reservation.php');
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -69,8 +73,7 @@ function ctrl_mes_reservations() {
 }
 
 function ctrl_confirmation_succes() {
-    echo "<h2> Réservation confirmée avec succès !</h2>";
-    echo "<a href='index.php'>Retour à l'accueil</a>";
+   require_once(__DIR__ . '/../views/confirmation_succes.php');
 }
 
 
@@ -82,6 +85,8 @@ function ctrl_confirmation_succes() {
 
 
 function ctrl_mes_trajets() {
+    require_once(__DIR__ . '/../config/conf.php');
+    require_once(__DIR__ . '/../models/ajouter_reservation.php');
     session_start();
 
     if (!isset($_SESSION['uid'])) {
@@ -97,6 +102,8 @@ function ctrl_mes_trajets() {
 }
 
 function ctrl_reservations_trajet() {
+    require_once(__DIR__ . '/../config/conf.php');
+    require_once(__DIR__ . '/../models/ajouter_reservation.php');
     session_start();
 
     if (!isset($_SESSION['uid']) || !isset($_GET['trajet_id'])) {
@@ -112,6 +119,8 @@ function ctrl_reservations_trajet() {
 }
 
 function ctrl_changer_statut() {
+    require_once(__DIR__ . '/../config/conf.php');
+    require_once(__DIR__ . '/../models/ajouter_reservation.php');
     session_start();
 
     if (!isset($_SESSION['uid']) || !isset($_POST['id']) || !isset($_POST['statut']) || !isset($_POST['trajet_id'])) {
