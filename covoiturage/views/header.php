@@ -35,7 +35,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <?php 
 if (!empty($_SESSION['notification'])) {
-    echo '<div id="notification">' . htmlspecialchars($_SESSION['notification']) . '</div>';
+    echo '<div id="notification">' . $_SESSION['notification'] . '</div>';
     unset($_SESSION['notification']);
 }
 ?>
