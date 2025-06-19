@@ -41,7 +41,7 @@
                 echo "<td>";
 
                 // Formulaire de réservation
-                echo '<form action="index.php?route=reserver_trajet" method="post" style="display:inline;">';
+                echo '<form action="index.php?route=reserver_trajet" method="GET" style="display:inline;">';
                 echo '<input type="hidden" name="trajet_id" value="' . htmlspecialchars($trajet['id']) . '">';
                 echo '<button type="submit">Réserver</button>';
                 echo '</form>';
