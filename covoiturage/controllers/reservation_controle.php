@@ -24,11 +24,6 @@ function ctrl_reserver_trajet() {
         $trajet_id = (int) $_GET['trajet_id'];
         $trajet = find_trajet_by_id($pdo, $trajet_id);
 
-        if (!$trajet) {
-            echo "Trajet introuvable.";
-            exit;
-        }
-
         confirmation_reservation_view($trajet);
         return;
     }
