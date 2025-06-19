@@ -34,25 +34,34 @@ function ctrl_reserver_trajet() {
     }
 
     // ----- valider la réservation -----
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
-        $trajet_id = (int) $_POST['trajet_id'];
-        $passager_id = $_SESSION['login'];
+   // ----- POST : valider la réservation -----
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
+    $trajet_id = (int) $_POST['trajet_id'];
+    $passager_id = $_SESSION['login'];
 
-        $trajet = find_trajet_by_id($pdo, $trajet_id);
-        if (!$trajet) {
-            echo "Erreur : trajet inexistant.";
-            exit;
-        }
-        if (ajouter_reservation($pdo, $trajet_id, $passager_id)) {
-            header('Location: index.php?route=reservation_success');
-            exit;
-        } else {
-            echo "Erreur lors de la réservation.";
-        }
+    $trajet = find_trajet_by_id($pdo, $trajet_id);
+    if (!$trajet) {
+        echo "Erreur : trajet inexistant.";
+        exit;
+    }
+
+    $type_trajet = $trajet['typeTrajet'];
+
+    if (deja_reserve_ce_type_aujourdhui($pdo, $passager_id, $type_trajet)) {
+        echo "<p style='color:red;'>❌ Vous avez déjà réservé un trajet <strong>$type_trajet</strong> aujourd'hui.</p>";
+        echo "<a href='index.php'>⬅ Retour à l'accueil</a>";
+        exit;
+    }
+
+    if (ajouter_reservation($pdo, $trajet_id, $passager_id)) {
+        header('Location: index.php?route=reservation_success');
+        exit;
     } else {
-        echo "Requête invalide.";
+        echo "Erreur lors de la réservation.";
     }
 }
+
+
 
 function ctrl_mes_reservations() {
     require_once(__DIR__ . '/../config/conf.php');
