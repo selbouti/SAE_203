@@ -39,8 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
     $type_trajet = $trajet['typeTrajet'];
 
     if (deja_reserve_ce_type_aujourdhui($pdo, $passager_id, $type_trajet)) {
-        echo "<p style='color:red;'>❌ Vous avez déjà réservé un trajet <strong>$type_trajet</strong> aujourd'hui.</p>";
-        echo "<a href='index.php'>⬅ Retour à l'accueil</a>";
+          erreur_reservation_view($type_trajet);
         exit;
     }
 
