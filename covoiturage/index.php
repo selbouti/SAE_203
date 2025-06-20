@@ -74,9 +74,11 @@ case 'changer_statut':
     break;
 case 'message':
     if ($_GET['route'] === 'message') {
-        $trajet_id = $_POST['trajet_id'] ?? null;}
+        $trajet_id = $_POST['trajet_id'] ?? null;
+        $reservation_id = $_POST['reservation_id'] ?? null;
+        $type_message = $_POST['type_message'] ?? null;}
     require('views/message_view.php');
-    afficher_formulaire_message($trajet_id);
+    afficher_formulaire_message($trajet_id,$type_message,$reservation_id);
     break;
 
 case 'list_messages':

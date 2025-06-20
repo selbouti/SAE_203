@@ -14,45 +14,57 @@ function add_message_ctrl() {
     require_once(__DIR__ . '/../config/conf.php');
     $pdo;
     $expediteur = $_SESSION['login'];
+    $conducteur_id = NULL;
+    $destinataire =NULL;
     
-    // message AvantReservation
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
-        $trajet_id = (int) $_POST['trajet_id'];
-        $destinataire = recuperer_id_conducteur($trajet_id);
-        $contenu = trim($_POST['contenu']);
-        $type_message='AvantReservation';
-    }
-
+    
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
     // message ApresReservation
-    elseif($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['reservation_id'])){
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['type_message']=='ApresReservation'){
         $conducteur_id= recuperer_id_conducteur($_POST['trajet_id']);
         $contenu = trim($_POST['contenu']);
         $type_message='ApresReservation';
+        $trajet_id=$_POST['trajet_id'];
         // conducteur contacte le passager 
         if (is_conducteur($expediteur,$conducteur_id)){
+            echo '1';
             $destinataire = recuperer_id_passager($_POST['reservation_id']);
         }
         // passager contacte le conductuer
         elseif(is_passager($expediteur,$_POST['trajet_id'])){
-            $destinataire = recuperer_id_conduteur($trajet_id);
+            echo '2';
+            $destinataire = recuperer_id_conducteur($trajet_id);
         }
     }
 
-
+    // message AvantReservation
+    elseif ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['type_message']=='AvantReservation') {
+        $conducteur_id= recuperer_id_conducteur($_POST['trajet_id']);
+        $trajet_id = (int) $_POST['trajet_id'];
+        $destinataire = recuperer_id_conducteur($trajet_id);
+        $contenu = trim($_POST['contenu']);
+        $type_message='AvantReservation';
+        echo'3';
+    }
+    echo $conducteur_id;
+    
     if (!$trajet_id || !$destinataire || !$expediteur || !$contenu) {
         echo "<p>Paramètres manquants.</p>";
         return;
     }
 
-    if (is_conducteur($expediteur,$_POST['trajet_id']) || is_passager($expediteur,$_POST['trajet_id'])) {
-        add_message($trajet_id, $expediteur, $destinataire, $contenu, $type_message);
+    if (is_conducteur($expediteur,$conducteur_id) || is_passager($expediteur,$_POST['trajet_id'])|| ($_POST['type_message']=='AvantReservation'&& $destinataire==$conducteur_id)&& !is_passager($expediteur,$_POST['trajet_id'])) {
+        add_message($trajet_id, $expediteur, $destinataire, $contenu, $type_message,$_POST['reservation_id']);
         header("Location: index.php?route=list_messages&trajet_id=$trajet_id");
         exit;
     } else {
         echo "<p>Accès refusé.</p>";
     }
 }
-
+$conducteur_id = NULL;
+$destinataire =NULL;
 
 function list_messages_ctrl() {
     require_once(__DIR__ . '/../models/message_crud.php');

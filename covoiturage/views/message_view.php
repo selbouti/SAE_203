@@ -13,7 +13,7 @@ function messages_view($messages) {
         $type_message = htmlspecialchars($msg['type_message'] ?? 'Inconnu');
         $trajet_id = $msg['trajet_id'] ?? null;
         $nom_expediteur = htmlspecialchars($msg['prenom_expediteur'] ?? '') . " " . htmlspecialchars($msg['nom_expediteur'] ?? '');
-
+        $reservation=$msg['reservation_id'];
         $isMe = $expediteur_id === $user_id;
 
         echo "<div style='margin: 5px; padding: 10px; background-color:" . ($isMe ? '#ddf' : '#eee') . "'>";
@@ -23,9 +23,10 @@ function messages_view($messages) {
         echo "</div>";
 
         //repondre
-        echo '<form action="index.php?route=message" method="post" style="display:inline; margin-left:5px;">';
-        echo "<input type='hidden' name='reservation_id' value='" . htmlspecialchars($msg['reservation_id']) . "'>";
+        echo '<form action="index.php?route=message" method="Post" style="display:inline; margin-left:5px;">';
+        echo "<input type='hidden' name='reservation_id' value='" . htmlspecialchars($reservation) . "'>";
         echo "<input type='hidden' name='trajet_id' value='" . htmlspecialchars($msg['trajet_id']) . "'>";
+        echo "<input type='hidden' name='type_message' value='" . 'ApresReservation' . "'>";
         echo "<button type='submit' style='margin-top: 5px; background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 5px;'>Répondre</button>";
         echo "</form>";
     }
@@ -34,12 +35,22 @@ function messages_view($messages) {
 
 
 }
-function afficher_formulaire_message($trajet_id, $type_message = "AvantReservation") {
+function afficher_formulaire_message($trajet_id, $type_message , $reservation_id=NULL) {
+    $trajet_id = htmlspecialchars($trajet_id);
+    $type_message = htmlspecialchars($type_message);
+    $reservation_input = "";
+
+    if ($type_message === "ApresReservation" && $reservation_id !== null) {
+        $reservation_id = htmlspecialchars($reservation_id);
+        $reservation_input = "<input type='hidden' name='reservation_id' value='$reservation_id'>";
+    }
+
     echo <<<HTML
     <h2>Envoyer un message</h2>
     <form method="POST" action="index.php?route=send_message">
         <input type="hidden" name="trajet_id" value="$trajet_id">
         <input type="hidden" name="type_message" value="$type_message">
+        $reservation_input
 
         <label for="contenu">Message :</label><br>
         <textarea name="contenu" id="contenu" rows="4" cols="50" placeholder="Votre message..." required></textarea><br><br>

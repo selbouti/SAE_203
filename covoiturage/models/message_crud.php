@@ -11,7 +11,7 @@ function recuperer_id_conducteur($trajet_id) {
     $sql = "SELECT id_conducteur FROM trajet WHERE id = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$trajet_id]);
-    return $stmt->fetch(PDO::FETCH_ASSOC); // fetch simple car un seul résultat attendu
+    return $stmt->fetchColumn(); // fetch simple car un seul résultat attendu
 }
 
 function recuperer_id_passager($reservation_id) {
@@ -21,7 +21,7 @@ function recuperer_id_passager($reservation_id) {
     $sql = "SELECT id_passager FROM reservation WHERE  id = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$reservation_id]);
-    return $stmt->fetch(PDO::FETCH_ASSOC); // fetch simple car un seul résultat attendu
+    return $stmt->fetchColumn();// fetch simple car un seul résultat attendu
 }
 
 
@@ -54,13 +54,13 @@ function is_passager($user_id, $trajet_id){
 
  // Ajoute un message dans la base de données
  
-function add_message($trajet_id, $expediteur_id, $destinataire_id, $contenu, $type_message) {
+function add_message($trajet_id, $expediteur_id, $destinataire_id, $contenu, $type_message,$reservation_id) {
     global $pdo;
     $stmt = $pdo->prepare("
-        INSERT INTO messages (trajet_id, expediteur_id, destinataire_id, contenu, type_message)
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO messages (trajet_id, expediteur_id, destinataire_id, contenu, type_message,reservation_id)
+        VALUES (?, ?, ?, ?, ?,?)
     ");
-    $stmt->execute([$trajet_id, $expediteur_id, $destinataire_id, $contenu, $type_message]);
+    $stmt->execute([$trajet_id, $expediteur_id, $destinataire_id, $contenu, $type_message,$reservation_id]);
 }
 
 

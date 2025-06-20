@@ -16,7 +16,7 @@
       <a href="index.php?route=rides">Proposer un trajet</a>
       <a href="index.php?route=trajets">Mes trajets</a>
       <a href="index.php?route=list_messages">Messagerie</a>
-      <a href="index.php?route=logout">Déconnexion</a>
+      <a href="index.php?route=login">Déconnexion</a>
     </div>
   </nav>
 
