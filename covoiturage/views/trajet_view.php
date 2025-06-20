@@ -30,25 +30,24 @@
         if (isset($trajets) && is_array($trajets) && count($trajets) > 0) {
             foreach ($trajets as $trajet) {
                 echo "<tr>";
-                echo "<td>" . htmlspecialchars($trajet['heureDepart']) . "</td>";
-                echo "<td>" . htmlspecialchars($trajet['heureArrivee']) . "</td>";
-                echo "<td>" . htmlspecialchars($trajet['prenom_conducteur'] . ' ' . $trajet['nom_conducteur']) . "</td>";
-                echo "<td>" . htmlspecialchars($trajet['lieuDepart']) . "</td>";
-                echo "<td>" . htmlspecialchars($trajet['points_intermediaires'] ?? 'Aucun') . "</td>";
-                echo "<td>" . htmlspecialchars($trajet['nbr_place'] ?? '') . "</td>";
+                echo "<td>" . $trajet['heureDepart'] . "</td>";
+                echo "<td>" . $trajet['heureArrivee'] . "</td>";
+                echo "<td>" . $trajet['prenom_conducteur'] . ' ' . $trajet['nom_conducteur'] . "</td>";
+                echo "<td>" . $trajet['lieuDepart'] . "</td>";
+                echo "<td>" . ($trajet['points_intermediaires'] ?? 'Aucun') . "</td>";
+                echo "<td>" . ($trajet['nbr_place'] ?? '') . "</td>";
 
-                // Colonne avec les boutons
                 echo "<td>";
 
-                // Formulaire de réservation
+                // Réserver
                 echo '<form action="index.php?route=reserver_trajet" method="GET" style="display:inline;">';
-                echo '<input type="hidden" name="trajet_id" value="' . htmlspecialchars($trajet['id']) . '">';
+                echo '<input type="hidden" name="trajet_id" value="' . $trajet['id'] . '">';
                 echo '<button type="submit">Réserver</button>';
                 echo '</form>';
 
-                // Formulaire pour envoyer un message
+                // Envoyer message
                 echo '<form action="index.php?route=message_trajet" method="post" style="display:inline; margin-left:5px;">';
-                echo '<input type="hidden" name="trajet_id" value="' . htmlspecialchars($trajet['id']) . '">';
+                echo '<input type="hidden" name="trajet_id" value="' . $trajet['id'] . '">';
                 echo '<button type="submit">Envoyer un message</button>';
                 echo '</form>';
 
@@ -63,4 +62,3 @@
     </table>
 </body>
 </html>
-
