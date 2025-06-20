@@ -1,5 +1,4 @@
 <?php
-require('views/header.php');
 require_once('models/crud.php');
 
 $rides = getAllRides();

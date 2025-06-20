@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Accueil Passager</title>
-  <link rel="stylesheet" href="lobby.css">
+  <link rel="stylesheet" href="/dev/SAE_203/covoiturage/css/lobby.css">
 </head>
 <body class="bg">
   <nav class="navbar">
     <div class="logo-container">
-      <img src="background.png" alt="Logo" class="logo">
+      <img src="/dev/SAE_203/covoiturage/images/logo.png" alt="Logo" class="logo">
       <span>Covoiturage</span>
     </div>
     <div class="nav-links">
       <a href="index.php?route=trajets">Voir les trajets</a>
       <a href="index.php?route=mes_reservations">Mes réservations</a>
-      <a href="index.php?route=messagerie">Messagerie</a>
+      <a href="index.php?route=list_messages">Messagerie</a>
       <a href="index.php?route=login">Déconnexion</a>
     </div>
   </nav>

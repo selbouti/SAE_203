@@ -4,7 +4,7 @@
 <head>
  <meta charset="utf-8" />
  <title>Fiche d'inscription</title>
- <link rel="stylesheet" type="text/css" href="css/connexion.css" />
+ <link rel="stylesheet" type="text/css" href="/dev/SAE_203/covoiturage/css/connexion.css" />
  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -22,8 +22,8 @@
 <label for="sujet">Rôle</label>
 <select name="sujet" id="sujet" required>
 <option value="" disabled selected hidden>Choisissez votre rôle</option>
-<option value="conducteur">Conducteur</option>
-<option value="utilisateur">Transporté</option>
+<option value="Conducteur">Conducteur</option>
+<option value="utilisateur">Passager</option>
 </select>
 
 <label for="adresse">Adresse complète</label>

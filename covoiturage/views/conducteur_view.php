@@ -9,13 +9,13 @@
 <body class="bg">
   <nav class="navbar">
     <div class="logo-container">
-      <img src="/dev/SAE_203/covoiturage/images/background.png" alt="Logo" class="logo">
+      <img src="/dev/SAE_203/covoiturage/images/logo.png" alt="Logo" class="logo">
       <span>Covoiturage</span>
     </div>
     <div class="nav-links">
       <a href="index.php?route=rides">Proposer un trajet</a>
       <a href="index.php?route=trajets">Mes trajets</a>
-      <a href="index.php?route=messagerie">Messagerie</a>
+      <a href="index.php?route=list_messages">Messagerie</a>
       <a href="index.php?route=logout">Déconnexion</a>
     </div>
   </nav>

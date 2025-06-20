@@ -1,24 +1,26 @@
  <?php
- function form_submit_ctrl() {
- if (session_status() === PHP_SESSION_NONE) {
- session_start();}
- 
- if (!isset($_SESSION['uid'])) {
- header("Location: index.php?route=login"); 
- exit;
- }
  require(__DIR__ . '/../config/conf.php');
- require(__DIR__ . '/../controllers/auth_ctrl.php');
- global $pdo;
- $uid = $_SESSION['uid'];
- 
- $stmt = $pdo->prepare("SELECT COUNT(*) FROM etudiant WHERE id = ?");
- $stmt->execute([$uid]);
- $exists = $stmt->fetchColumn();
+ function form_submit_ctrl() {
+    
+    require(__DIR__ . '/../controllers/auth_ctrl.php');
+    if (session_status() === PHP_SESSION_NONE) {
+    session_start();}
+    
+    if (!isset($_SESSION['uid'])) {
+    header("Location: index.php?route=login"); 
+    exit;
+    }
+    
+    global $pdo;
+    $uid = $_SESSION['login'];
+        
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM etudiant WHERE id = ?");
+    $stmt->execute([$uid]);
+    $exists = $stmt->fetchColumn();
 
- if ($exists) {
- header("Location: index.php?route=home");
- exit;
+    if ($exists) {
+    header("Location: index.php?route=home");
+    exit;
  }
  
 

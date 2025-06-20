@@ -44,16 +44,16 @@ switch ($route) {
        ctrl_reserver_trajet();
        break;
    
-   case 'mes_reservations':
+case 'mes_reservations':
        require 'controllers/reservation_controle.php';
        ctrl_mes_reservations();
        break;
    
-   case 'reservation_success':
+case 'reservation_success':
        require 'controllers/reservation_controle.php';
        ctrl_confirmation_succes();
        break;
- case 'mes_trajets':
+case 'mes_trajets':
        require 'controllers/reservation_controle.php';
        ctrl_mes_trajets();
        break;
@@ -74,7 +74,7 @@ case 'changer_statut':
     break;
 case 'message':
     if ($_GET['route'] === 'message') {
-        $trajet_id = $_GET['trajet_id'] ?? null;}
+        $trajet_id = $_POST['trajet_id'] ?? null;}
     require('views/message_view.php');
     afficher_formulaire_message($trajet_id);
     break;

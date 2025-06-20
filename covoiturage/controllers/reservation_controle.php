@@ -62,8 +62,8 @@ function ctrl_mes_reservations() {
         exit;
     }
 
-    $pdo = connection();
-    $reservations = get_reservations_by_passager($pdo, $_SESSION['user']['id']);
+    global $pdo ;
+    $reservations = get_reservations_by_passager($pdo, $_SESSION['login']);
 
     mes_reservations_view($reservations);
 }
@@ -81,16 +81,21 @@ function ctrl_confirmation_succes() {
 
 
 function ctrl_mes_trajets() {
+<<<<<<< Updated upstream
     require_once(__DIR__ . '/../config/conf.php');
     require_once(__DIR__ . '/../models/ajouter_reservation.php');
     session_start();
+=======
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();}
+>>>>>>> Stashed changes
 
     if (!isset($_SESSION['uid'])) {
         header('Location: index.php?route=login');
         exit;
     }
 
-    $pdo = connection();
+    global $pdo;
     $conducteur_id = $_SESSION['login'];
 
     $trajets = get_trajets_par_conducteur($pdo, $conducteur_id);
@@ -98,16 +103,21 @@ function ctrl_mes_trajets() {
 }
 
 function ctrl_reservations_trajet() {
+<<<<<<< Updated upstream
     require_once(__DIR__ . '/../config/conf.php');
     require_once(__DIR__ . '/../models/ajouter_reservation.php');
     session_start();
+=======
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();}
+>>>>>>> Stashed changes
 
     if (!isset($_SESSION['uid']) || !isset($_GET['trajet_id'])) {
         header('Location: index.php?route=login');
         exit;
     }
 
-    $pdo = connection();
+    global $pdo ;
     $trajet_id = (int) $_GET['trajet_id'];
 
     $reservations = get_reservations_par_trajet($pdo, $trajet_id);
@@ -115,16 +125,21 @@ function ctrl_reservations_trajet() {
 }
 
 function ctrl_changer_statut() {
+<<<<<<< Updated upstream
     require_once(__DIR__ . '/../config/conf.php');
     require_once(__DIR__ . '/../models/ajouter_reservation.php');
     session_start();
+=======
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();}
+>>>>>>> Stashed changes
 
     if (!isset($_SESSION['uid']) || !isset($_POST['id']) || !isset($_POST['statut']) || !isset($_POST['trajet_id'])) {
         header('Location: index.php?route=login');
         exit;
     }
 
-    $pdo = connection();
+    global $pdo;
 
     $reservation_id = (int) $_POST['id'];
     $trajet_id = (int) $_POST['trajet_id'];

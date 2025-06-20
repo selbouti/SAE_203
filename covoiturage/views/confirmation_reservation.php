@@ -104,7 +104,7 @@ function reservations_par_trajet_view(int $trajet_id, array $reservations) {
             echo "<td>";
             if ($r['statut'] === 'EnAttente') {
                 echo "<form method='post' action='index.php?route=changer_statut' style='display:inline;'>";
-                echo "<input type='hidden' name='id' value='{ $r['id'] }'>";
+                echo "<input type='hidden' name='id' value='{$r['id']}'>";
                 echo "<input type='hidden' name='trajet_id' value='$trajet_id'>";
                 echo "<button type='submit' name='statut' value='Acceptee'>Accepter</button>";
                 echo "<button type='submit' name='statut' value='Refusee'>Refuser</button>";
