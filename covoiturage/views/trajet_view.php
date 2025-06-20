@@ -10,7 +10,7 @@
 
     <?php
     // Inclusion du contrôleur
-    require_once __DIR__ . '/../controllers/trajet_controle.php';
+    //require_once __DIR__ . '/../controllers/trajet_controle.php';
     ?>
 
     <table border="1">
