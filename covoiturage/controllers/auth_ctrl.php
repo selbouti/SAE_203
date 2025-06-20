@@ -27,10 +27,6 @@ function login_ctrl() {
             header("Location: index.php?route=formulaire");
         }
         exit;
-    } else {
-        echo "<p>Login ou mot de passe incorrect.</p>";
-    }
-}
 
 
 
