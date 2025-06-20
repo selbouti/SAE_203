@@ -7,12 +7,12 @@ function confirmation_reservation_view(array $trajet) {
     echo "<p><strong>Arrivée :</strong> {$trajet['lieuArrivee']}</p>";
     echo "<p><strong>Date :</strong> " . date('d/m/Y', strtotime($trajet['date'])) . "</p>";
     echo "<p><strong>Heure :</strong> " . substr($trajet['heureDepart'], 0, 5) . "</p>";
-    echo "<p><strong>Conducteur :</strong> {$trajet['conducteur_prenom']} {$trajet['conducteur_nom']}</p>";
+    echo "<p><strong>Conducteur :</strong> {$trajet['conducteur_nom']}</p>";
     echo "<p><strong>Places restantes :</strong> {$trajet['nbr_place']}</p>";
 
     echo "<p style='color:blue;'>Voulez-vous  réserver ce trajet ?</p>";
 
-    echo "<form method='post' action='index.php?route=reserver_trajet'>";
+    echo "<form method='GET' action='index.php?route=reserver_trajet'>";
     echo "<input type='hidden' name='trajet_id' value='{$trajet['id']}'>";
     echo "<button type='submit' class='btn-reserver'> Confirmer</button>";
     echo " <a href='index.php' class='btn-annuler'> Annuler</a>";

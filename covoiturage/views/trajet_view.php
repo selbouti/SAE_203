@@ -40,7 +40,7 @@
                 echo "<td>";
 
                 // Réserver
-                echo '<form action="index.php?route=reserver_trajet" method="GET" style="display:inline;">';
+                echo '<form action="index.php?route=reserver_trajet" method="POST" style="display:inline;">';
                 echo '<input type="hidden" name="trajet_id" value="' . $trajet['id'] . '">';
                 echo '<button type="submit">Réserver</button>';
                 echo '</form>';

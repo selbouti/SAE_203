@@ -34,9 +34,9 @@ function deja_reserve_ce_type_aujourdhui(PDO $connex, string $id_passager, strin
 
 
 function find_trajet_by_id(PDO $pdo, int $id) {
-    $req = "SELECT t.*, u.nom AS conducteur_nom, u.prenom AS conducteur_prenom 
+    $req = "SELECT t.*, u.nom AS conducteur_nom 
             FROM trajet t 
-            JOIN utilisateur u ON t.id_conducteur = u.id 
+            JOIN etudiant u ON t.id_conducteur = u.id 
             WHERE t.id = :id";
 
     $prep = $pdo->prepare($req);

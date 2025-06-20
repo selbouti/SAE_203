@@ -17,11 +17,11 @@ function ctrl_reserver_trajet() {
         exit;
     }
 
-    $pdo = connection();
+    
 
     // -----  afficher la confirmation -----
-    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['trajet_id'])) {
-        $trajet_id = (int) $_GET['trajet_id'];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
+        $trajet_id = (int) $_POST['trajet_id'];
         $trajet = find_trajet_by_id($pdo, $trajet_id);
 
         confirmation_reservation_view($trajet);
@@ -30,24 +30,24 @@ function ctrl_reserver_trajet() {
 
     // ----- valider la réservation -----
    // ----- POST : valider la réservation -----
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trajet_id'])) {
-    $trajet_id = (int) $_POST['trajet_id'];
-    $passager_id = $_SESSION['login'];
+    if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['trajet_id'])) {
+        $trajet_id = (int) $_GET['trajet_id'];
+        $passager_id = $_SESSION['login'];
 
+        echo $trajet;
+        $type_trajet = $trajet['typeTrajet'];
 
-    $type_trajet = $trajet['typeTrajet'];
+        if (deja_reserve_ce_type_aujourdhui($pdo, $passager_id, $type_trajet)) {
+            erreur_reservation_view($type_trajet);
+            exit;
+        }
 
-    if (deja_reserve_ce_type_aujourdhui($pdo, $passager_id, $type_trajet)) {
-          erreur_reservation_view($type_trajet);
-        exit;
+        if (ajouter_reservation($pdo, $trajet_id, $passager_id)) {
+            header('Location: index.php?route=reservation_success');
+            exit;
+        } 
     }
-
-    if (ajouter_reservation($pdo, $trajet_id, $passager_id)) {
-        header('Location: index.php?route=reservation_success');
-        exit;
-    } 
 }
-
 
 
 function ctrl_mes_reservations() {
@@ -81,14 +81,11 @@ function ctrl_confirmation_succes() {
 
 
 function ctrl_mes_trajets() {
-<<<<<<< Updated upstream
     require_once(__DIR__ . '/../config/conf.php');
     require_once(__DIR__ . '/../models/ajouter_reservation.php');
     session_start();
-=======
     if (session_status() === PHP_SESSION_NONE) {
         session_start();}
->>>>>>> Stashed changes
 
     if (!isset($_SESSION['uid'])) {
         header('Location: index.php?route=login');
@@ -103,14 +100,11 @@ function ctrl_mes_trajets() {
 }
 
 function ctrl_reservations_trajet() {
-<<<<<<< Updated upstream
     require_once(__DIR__ . '/../config/conf.php');
     require_once(__DIR__ . '/../models/ajouter_reservation.php');
     session_start();
-=======
     if (session_status() === PHP_SESSION_NONE) {
         session_start();}
->>>>>>> Stashed changes
 
     if (!isset($_SESSION['uid']) || !isset($_GET['trajet_id'])) {
         header('Location: index.php?route=login');
@@ -125,14 +119,11 @@ function ctrl_reservations_trajet() {
 }
 
 function ctrl_changer_statut() {
-<<<<<<< Updated upstream
     require_once(__DIR__ . '/../config/conf.php');
     require_once(__DIR__ . '/../models/ajouter_reservation.php');
     session_start();
-=======
     if (session_status() === PHP_SESSION_NONE) {
         session_start();}
->>>>>>> Stashed changes
 
     if (!isset($_SESSION['uid']) || !isset($_POST['id']) || !isset($_POST['statut']) || !isset($_POST['trajet_id'])) {
         header('Location: index.php?route=login');
