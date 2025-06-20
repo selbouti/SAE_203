@@ -15,7 +15,7 @@ function getTrajetsDuJour($connexion) {
     $result = $connexion->query($sql);
         
     if ($result === false) {
-        echo "Erreur SQL : ";
+    
         print_r($connexion->errorInfo());
         return [];
     }
